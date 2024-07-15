@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Number Picker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #app {
+            text-align: center;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        button {
+            font-size: 16px;
+        }
+        #result, #pickedNumbers, #availableNumbers {
+            margin-top: 20px;
+            font-size: 16px;
+            word-break: break-word;
+        }
+        @media (min-width: 600px) {
+            #app {
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Random Number Picker</h1>
+        <input type="number" id="start" placeholder="Enter start number">
+        <input type="number" id="end" placeholder="Enter end number">
+        <div>
+            <button onclick="pickRandomNumber()">Pick a Random Number</button>
+            <button onclick="resetNumbers()">Reset Numbers</button>
+            <span id="status"></span>
+        </div>
+        <input type="number" id="additionalNumber" placeholder="Enter additional number">
+        <button onclick="addNumber()">Add Number</button>
+        <div id="result"></div>
+        <div id="pickedNumbers"></div>
+        <div id="availableNumbers"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
