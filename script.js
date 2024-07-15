@@ -6,7 +6,8 @@ function updateAvailableNumbers() {
     availableNumbersDiv.innerHTML = `<p>Available numbers: ${numbers.join(', ')}</p>`;
 }
 
-function pickRandomNumber() {
+function pickRandomNumbers() {
+    const quantity = parseInt(document.getElementById('quantity').value);
     const start = parseInt(document.getElementById('start').value);
     const end = parseInt(document.getElementById('end').value);
     const resultDiv = document.getElementById('result');
@@ -30,11 +31,20 @@ function pickRandomNumber() {
         return;
     }
 
-    const randomIndex = Math.floor(Math.random() * numbers.length);
-    const pickedNumber = numbers.splice(randomIndex, 1)[0];
-    pickedNumbers.push(pickedNumber);
+    if (quantity > numbers.length) {
+        resultDiv.textContent = 'Not enough numbers available to pick.';
+        return;
+    }
 
-    resultDiv.textContent = `Picked number: ${pickedNumber}`;
+    const picked = [];
+    for (let i = 0; i < quantity; i++) {
+        const randomIndex = Math.floor(Math.random() * numbers.length);
+        const pickedNumber = numbers.splice(randomIndex, 1)[0];
+        pickedNumbers.push(pickedNumber);
+        picked.push(pickedNumber);
+    }
+
+    resultDiv.textContent = `Picked number(s): ${picked.join(', ')}`;
     pickedNumbersDiv.innerHTML = `<p>Picked numbers: ${pickedNumbers.join(', ')}</p>`;
     updateAvailableNumbers();
 
